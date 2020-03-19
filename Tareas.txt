@@ -1,5 +1,5 @@
-BAYEGO:
-JAVI:
-GIMENO:
-CALVO:
-OTERO:
+BAYEGO: Plataformas
+JAVI: Animacion
+GIMENO: Menu Pausa
+CALVO: Puntuacion
+OTERO: Menu Inicio
