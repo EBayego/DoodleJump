@@ -8,20 +8,20 @@ public class Movement : MonoBehaviour{
     float speed=9.0f;
     float velY = 0, velX = 0;
     // Start is called before the first frame update
-    void Start(){
+    void Start(){ // ESTO ES EL INIT DE LOS APPLETS
         
     }
 
     // Update is called once per frame
-    void Update(){
-        velY = (float)rigidbody.velocity.y;
+    void Update(){ //EL RUN DE LOS APPLETS 
+        velY = (float)rigidbody.velocity.y; //rigidbody es un atributo de los objetos que hace que tenga un cuerpo rigido, aplica físicas
 
-        Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), velY/12, 0);
+        Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), velY/12, 0); 
 
-        this.transform.position += Movement * speed * Time.deltaTime;
+        this.transform.position += Movement * speed * Time.deltaTime; //transform es una propiedad de los objetos basicamente para colocarlos en el espacio 
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other) //FUNCION PARA QUE REBOTE EL PERSONAJE
     {
         velX = (float)rigidbody.velocity.x;
         if (other.gameObject.tag == "Platform") {
