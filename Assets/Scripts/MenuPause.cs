@@ -38,7 +38,7 @@ public class MenuPause : MonoBehaviour{
     }
 
     public void btnmainmenu(){
-        SceneManager.LoadScene("PONER ESCENA DEL MENU PRINCIPAL");
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
