@@ -29,4 +29,9 @@ public class ScoreController : MonoBehaviour
         textScore.text = "Score: " + Mathf.Round(Score).ToString();
 
     }
+
+    public static void setZero()
+    {
+        Score = 0;
+    }
 }

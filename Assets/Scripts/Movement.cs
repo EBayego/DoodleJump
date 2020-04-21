@@ -13,34 +13,26 @@ public class Movement : MonoBehaviour{
     float dirX;
     
     // Start is called before the first frame update
-    void Start(){ // ESTO ES COMO EL INIT DE LOS APPLETS
-   
+    void Start()
+    {
+        ScoreController.setZero();
         Screen.sleepTimeout = SleepTimeout.NeverSleep; //para que no se suspenda el telefono mientras jugamos
-
-        
-
+        Time.timeScale = 1.0f;
     }
 
     // Update is called once per frame
-    void Update(){ //EL RUN DE LOS APPLETS
-
-        velY = (float)rigidbody.velocity.y; //rigidbody es un atributo de los objetos que hace que tenga un cuerpo rigido, aplica físicas
-
-
-
+    void Update()
+    { 
+        velY = (float)rigidbody.velocity.y;
         //ESTO ES PARA EL MOVIMIENTO EN EL MOVIL
         dirX = Input.acceleration.x*2;
 
        //Vector3 Movement = new Vector3(dirX, velY/18, 0);
-
         //FIN DEL MOVIMIENTO DEL MOVIL
 
-
-        //ESTO ES PARA EL MOVIMIENTO EN ORDENADOR
-        
+        //ESTO ES PARA EL MOVIMIENTO EN ORDENADOR     
         Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), velY/18, 0);
-        Debug.Log(Movement);
-        this.transform.position += Movement * speed * Time.deltaTime; //transform es una propiedad de los objetos basicamente para colocarlos en el espacio 
+        this.transform.position += Movement * speed * Time.deltaTime;
         timer += Time.deltaTime;
         if (timer > 0.5f) {
             robotAnimator.SetBool("Platform", false);
