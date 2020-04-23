@@ -27,11 +27,11 @@ public class Movement : MonoBehaviour{
         //ESTO ES PARA EL MOVIMIENTO EN EL MOVIL
         dirX = Input.acceleration.x*2;
 
-       Vector3 Movement = new Vector3(dirX, velY/18, 0);
+        //Vector3 Movement = new Vector3(dirX, velY/18, 0);
         //FIN DEL MOVIMIENTO DEL MOVIL
 
         //ESTO ES PARA EL MOVIMIENTO EN ORDENADOR     
-        //Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), velY/18, 0);
+        Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), velY/18, 0);
         this.transform.position += Movement * speed * Time.deltaTime;
         timer += Time.deltaTime;
         if (timer > 0.5f) {
