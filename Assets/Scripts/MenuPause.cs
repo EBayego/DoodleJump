@@ -19,7 +19,7 @@ public class MenuPause : MonoBehaviour{
         }
     }
 
-    void pausa(){
+    public void pausa(){
         menu.SetActive(true);
         Time.timeScale = 0; 
         juegopausado = true;
@@ -36,9 +36,13 @@ public class MenuPause : MonoBehaviour{
         Time.timeScale = 1;
         juegopausado = false;
     }
+    public void btnrestart() {
+        SceneManager.LoadScene("Doodle");
+    
+    }
 
     public void btnmainmenu(){
-        SceneManager.LoadScene("PONER ESCENA DEL MENU PRINCIPAL");
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
