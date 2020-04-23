@@ -43,9 +43,11 @@ public class Movement : MonoBehaviour{
     void OnCollisionEnter(Collision other) //FUNCION PARA QUE REBOTE EL PERSONAJE
     {
         velX = (float)rigidbody.velocity.x;
-        if (other.gameObject.tag == "Platform") {
-            rigidbody.velocity = new Vector3(0, speed, 0);
+        if (other.gameObject.tag == "Platform") 
+        {
             robotAnimator.SetBool("Platform", true);
+            FindObjectOfType<AudioManager>().Play("MetalJump");
+            rigidbody.velocity = new Vector3(0, speed, 0);
         }
     }
  
