@@ -4,6 +4,7 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    private Sound s;
 
     void Awake()
     {
@@ -18,13 +19,16 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound '" + name + "' not found");
             return;
         }
-        s.source.Play();
+        if (!s.source.isPlaying)
+        {
+            s.source.Play();
+        }
     }
 
     void Start()
