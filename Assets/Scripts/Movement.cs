@@ -38,6 +38,13 @@ public class Movement : MonoBehaviour{
             robotAnimator.SetBool("Platform", false);
             timer = 0.0f;
         }
+        if (this.transform.position.x <= (-4.5f)) {
+            this.transform.position = new Vector3(4.4f,transform.position.y,0);
+        }
+        if (this.transform.position.x >= 4.5f)
+        {
+            this.transform.position = new Vector3((-4.4f), transform.position.y, 0);
+        }
     }
 
     void OnCollisionEnter(Collision other) //FUNCION PARA QUE REBOTE EL PERSONAJE
