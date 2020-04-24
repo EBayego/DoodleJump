@@ -7,7 +7,7 @@ public class LavaMovement : MonoBehaviour
 {
     private float speed = 1f;
     private int interval = 50, counter = 1;
-
+    public GameObject ScoreCanvas, GameOverMenu;
     void Update()
     {
         this.transform.position += new Vector3(0, speed * Time.deltaTime, 0);
@@ -31,12 +31,16 @@ public class LavaMovement : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.SetActive(false);
+            
+
             Invoke("GameOver", 2.0f);
         }
     }
 
     void GameOver()
     {
-        SceneManager.LoadScene("MainMenu");
+        ScoreCanvas.SetActive(false);
+        GameOverMenu.SetActive(true);
+        speed = 0.0f;
     }
 }
