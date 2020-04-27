@@ -17,8 +17,9 @@ public class WallDestroyer : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Wall") {
-            Destroy(other);
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.tag == "Pared") {
+            Destroy(other.gameObject);
         
         }
     

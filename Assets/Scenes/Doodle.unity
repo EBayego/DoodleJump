@@ -177,6 +177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pared 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6867744083137519055, guid: 713f96b3d5cbf354daf657796f65ad29,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7262969402659969382, guid: 713f96b3d5cbf354daf657796f65ad29,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -1220,6 +1225,7 @@ GameObject:
   - component: {fileID: 978957677}
   - component: {fileID: 978957676}
   - component: {fileID: 978957679}
+  - component: {fileID: 978957680}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1306,6 +1312,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 784889203}
   distance: {x: 0, y: 1, z: -12}
+--- !u!114 &978957680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978957675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!114 &980459388 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 307769003997168005, guid: 0c9a3d44951952d41be95e578a0d403a,
@@ -1411,6 +1448,7 @@ Transform:
   m_LocalScale: {x: 0.85, y: 0.42, z: 0.25}
   m_Children:
   - {fileID: 1900455152}
+  - {fileID: 1991361890}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1943,8 +1981,6 @@ GameObject:
   - component: {fileID: 1900455154}
   - component: {fileID: 1900455153}
   - component: {fileID: 1900455156}
-  - component: {fileID: 1900455157}
-  - component: {fileID: 1900455158}
   m_Layer: 4
   m_Name: LavaBody
   m_TagString: Untagged
@@ -2038,31 +2074,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec102a00163a20a409339eef696c4cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1900455157
+--- !u!1 &1991361887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1991361890}
+  - component: {fileID: 1991361889}
+  - component: {fileID: 1991361888}
+  m_Layer: 0
+  m_Name: WallDestroyer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1991361888
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900455151}
+  m_GameObject: {fileID: 1991361887}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9999999, y: 0.99999994, z: 2.47}
-  m_Center: {x: -1.1641532e-10, y: -0.78, z: 2.29}
---- !u!114 &1900455158
+  m_Size: {x: 11.19, y: 1, z: 9.46}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1991361889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900455151}
+  m_GameObject: {fileID: 1991361887}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80c9d57075ec916458df36516acf907b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1991361890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991361887}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2588235, y: -30.071424, z: 19.480001}
+  m_LocalScale: {x: 1.1764705, y: 2.3809524, z: 4}
+  m_Children: []
+  m_Father: {fileID: 1065500902}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2014192931 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5008366365716128062, guid: 79394a472ddfdbd42af205c04cdaa3b2,
