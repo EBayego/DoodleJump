@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour{
     public Animator robotAnimator;
     float timer;
     float dirX;
+    public GameObject ScoreCanvas, GameOverMenu;
     
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,16 @@ public class Movement : MonoBehaviour{
             robotAnimator.SetBool("Platform", true);
             FindObjectOfType<AudioManager>().Play("MetalJump");
             rigidbody.velocity = new Vector3(0, speed, 0);
+        }
+        
+    }
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.layer == 8)
+        {
+            this.gameObject.SetActive(false);
+            ScoreCanvas.SetActive(false);
+            GameOverMenu.SetActive(true);
+
         }
     }
  

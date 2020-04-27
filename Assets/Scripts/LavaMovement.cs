@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LavaMovement : MonoBehaviour
 {
-    private float speed = 1.75f, maxSpeed = 3.75f;
+    private static float speed = 1.75f, maxSpeed = 3.75f;
     private int interval = 50, counter = 1;
-    public GameObject ScoreCanvas, GameOverMenu;
+    public static GameObject ScoreCanvas, GameOverMenu;
     private bool once;
     void Update()
     {
@@ -44,7 +44,7 @@ public class LavaMovement : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
         ScoreCanvas.SetActive(false);
         GameOverMenu.SetActive(true);
