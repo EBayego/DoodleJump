@@ -29,11 +29,11 @@ public class PlatformGenerator : MonoBehaviour
         if (transform.position.y < generationPoint.position.y + 6)
         {
             newDistanceX = Random.Range(minX, maxX);
-            maxY = minY + 5.1f;
+            maxY = minY + 2.3f;
             do
             {
                 newDistanceY = Random.Range(minY, maxY);
-            } while (newDistanceY - minY < 2);
+            } while (newDistanceY - minY < 1);
             minY = newDistanceY + height;
             transform.position = new Vector3(newDistanceX, newDistanceY, transform.position.z);
             NewPlatform = Instantiate(platform, transform.position, transform.rotation);
