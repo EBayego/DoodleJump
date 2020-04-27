@@ -5,8 +5,7 @@ using System.Collections;
 public class ScoreController : MonoBehaviour
 {
 
-    public static float Score = 0;
-    public string ScoreString = "Score";
+    public static int Score = 0;
     // Start is called before the first frame update
 
     public Text textScore;
@@ -23,10 +22,10 @@ public class ScoreController : MonoBehaviour
     {
         if(rb.velocity.y > 0 && transform.position.y > Score)
         {
-            Score = transform.position.y;
+            Score = (int) transform.position.y;
         }
 
-        textScore.text = "Score: " + Mathf.Round(Score).ToString();
+        textScore.text = "Score: " + Score;
 
     }
 

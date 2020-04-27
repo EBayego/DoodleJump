@@ -747,6 +747,21 @@ MonoBehaviour:
     volume: 0.139
     loop: 1
     source: {fileID: 0}
+  - name: Lava
+    clip: {fileID: 8300000, guid: bf6c795d991ec4d4eb90586a8d6cc2a6, type: 3}
+    volume: 0.32
+    loop: 1
+    source: {fileID: 0}
+  - name: RobotExplosion
+    clip: {fileID: 8300000, guid: f9a5c5521dbd0144fa83195fc34f5490, type: 3}
+    volume: 0.37
+    loop: 0
+    source: {fileID: 0}
+  - name: LevelUp
+    clip: {fileID: 8300000, guid: 63dcdad8c99d72649afe621095a49f3f, type: 3}
+    volume: 0.37
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &425514170
 Transform:
   m_ObjectHideFlags: 0

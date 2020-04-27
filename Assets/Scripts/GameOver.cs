@@ -22,7 +22,6 @@ public class GameOver : MonoBehaviour
         if (other.gameObject.tag == "OneWay")
         {
             platform = other.gameObject.transform.parent.gameObject;
-            //Destroy(other.gameObject.transform.parent.gameObject);
             Invoke("DestroyObj", 0.7f);
         }
     }

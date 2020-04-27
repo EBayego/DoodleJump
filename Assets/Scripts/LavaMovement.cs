@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LavaMovement : MonoBehaviour
 {
-    private float speed = 2.25f, maxSpeed = 3.75f;
+    private float speed = 1.75f, maxSpeed = 3.75f;
     private int interval = 50, counter = 1;
     public GameObject ScoreCanvas, GameOverMenu;
+    private bool once;
     void Update()
     {
         this.transform.position += new Vector3(0, speed * Time.deltaTime, 0);
@@ -19,11 +20,17 @@ public class LavaMovement : MonoBehaviour
                 counter++;
             }
         }
-        if (ScoreController.Score % (interval*3) == 0 && ScoreController.Score!=0)
+        if (ScoreController.Score % (interval * 3) == 0 && ScoreController.Score != 0)
         {
-            Time.timeScale += 0.1f;
-            speed /= Time.timeScale;
+            if (once)
+            {
+                FindObjectOfType<AudioManager>().Play("LevelUp");
+                Time.timeScale += 0.1f;
+                speed /= Time.timeScale;
+                once = false;
+            }
         }
+        else once = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +38,8 @@ public class LavaMovement : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.SetActive(false);
+            FindObjectOfType<AudioManager>().Play("RobotExplosion");
+            FindObjectOfType<AudioManager>().Stop("MainTheme");
             Invoke("GameOver", 2.0f);
         }
     }
@@ -40,5 +49,15 @@ public class LavaMovement : MonoBehaviour
         ScoreCanvas.SetActive(false);
         GameOverMenu.SetActive(true);
         speed = 0.0f;
+    }
+
+    private void OnBecameVisible()
+    {
+        FindObjectOfType<AudioManager>().Play("Lava");
+    }
+
+    private void OnBecameInvisible()
+    {
+        FindObjectOfType<AudioManager>().Stop("Lava");
     }
 }
