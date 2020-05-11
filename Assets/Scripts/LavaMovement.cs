@@ -5,13 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LavaMovement : MonoBehaviour
 {
-    private float speed = 1.75f, maxSpeed = 3.75f;
+    private float speed, maxSpeed = 3.75f, temp;
     private int interval = 50, counter = 1;
-    public GameObject ScoreCanvas, GameOverMenu;
+    public GameObject ScoreCanvas, GameOverMenu, Player;
     private bool once;
-    void start() {
+
+    void Start()
+    {
         speed = 1.75f;
-    
+        temp = speed;
+
     }
     void Update()
     {
@@ -21,6 +24,7 @@ public class LavaMovement : MonoBehaviour
             if (ScoreController.Score > interval * counter)
             {
                 speed += 0.5f;
+                temp = speed;
                 counter++;
             }
         }
@@ -35,6 +39,19 @@ public class LavaMovement : MonoBehaviour
             }
         }
         else once = true;
+
+        if (Player.transform.position.y - this.transform.position.y > 60)
+        {
+            if (Player.transform.position.y - this.transform.position.y > 40)
+            {
+                speed = 6f;
+            }
+        }
+
+        if (Player.transform.position.y - this.transform.position.y <= 40)
+        {
+            speed = temp;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

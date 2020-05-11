@@ -31,59 +31,111 @@ public class Movement : MonoBehaviour
         velY = (float)rigidbody.velocity.y;
         //ESTO ES PARA EL MOVIMIENTO EN EL MOVIL
 
-        dirX = Input.acceleration.x * 2;
-        if (menuPause.GetComponent<MenuPause>().isGyroOn())
-        {
-            movement = new Vector3(dirX, velY / 18, 0);
+        //dirX = Input.acceleration.x * 2;
+        //if (menuPause.GetComponent<MenuPause>().isGyroOn())
+        //{
+        //    movement = new Vector3(dirX, velY / 18, 0);
 
-        }
-        else
-        {
+        //}
+        //else
+        //{
 
-            if ((Input.GetTouch(0).position.x < Screen.width / 2))
-            {
-                while ((horizontal >= -1.0f) && ((Input.GetTouch(0).position.x < Screen.width / 2)))
-                {
-                    horizontal -= 0.1f;
-                    Invoke("setMovement", 0.1f);
-                }
+        //    if ((Input.GetTouch(0).position.x < Screen.width / 2))
+        //    {
+        //        while ((horizontal >= -1.0f) && ((Input.GetTouch(0).position.x < Screen.width / 2)))
+        //        {
+        //            horizontal -= 0.1f;
+        //            Invoke("setMovement", 0.1f);
+        //        }
 
-            }
-            else
-            {
-                if ((Input.GetTouch(0).position.x > Screen.width / 2))
-                {
-                    while ((horizontal <= 1.0f) && (Input.GetTouch(0).position.x > Screen.width / 2))
-                    {
-                        horizontal += 0.1f;
-                        Invoke("setMovement", 0.1f);
-                    }
+        //    }
+        //    else
+        //    {
+        //        if ((Input.GetTouch(0).position.x > Screen.width / 2))
+        //        {
+        //            while ((horizontal <= 1.0f) && (Input.GetTouch(0).position.x > Screen.width / 2))
+        //            {
+        //                horizontal += 0.1f;
+        //                Invoke("setMovement", 0.1f);
+        //            }
 
-                }
-                else {
-                    if (horizontal < 0.0f)
-                    {
-                        horizontal += 0.1f;
-                        Invoke("setMovement", 0.1f);
-                    }
-                    else {
-                        if (horizontal > 0.0f)
-                        {
-                            horizontal -= 0.1f;
-                            Invoke("setMovement", 0.1f);
-                        }
-                    }
-                }
-            }
-            movement = new Vector3(horizontal, velY / 18, 0);
+        //        }
+        //        else
+        //        {
+        //            if (horizontal < 0.0f)
+        //            {
+        //                horizontal += 0.1f;
+        //                Invoke("setMovement", 0.1f);
+        //            }
+        //            else
+        //            {
+        //                if (horizontal > 0.0f)
+        //                {
+        //                    horizontal -= 0.1f;
+        //                    Invoke("setMovement", 0.1f);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    movement = new Vector3(horizontal, velY / 18, 0);
 
 
-        }
+        //}
+        //dirX = Input.acceleration.x * 2;
+        //if (menuPause.GetComponent<MenuPause>().isGyroOn())
+        //{
+        //    movement = new Vector3(dirX, velY / 18, 0);
+
+        //}
+        //else
+        //{
+
+        //    if ((Input.GetTouch(0).position.x < Screen.width / 2))
+        //    {
+        //        while ((horizontal >= -1.0f) && ((Input.GetTouch(0).position.x < Screen.width / 2)))
+        //        {
+        //            horizontal -= 0.1f;
+        //            Invoke("setMovement", 0.1f);
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        if ((Input.GetTouch(0).position.x > Screen.width / 2))
+        //        {
+        //            while ((horizontal <= 1.0f) && (Input.GetTouch(0).position.x > Screen.width / 2))
+        //            {
+        //                horizontal += 0.1f;
+        //                Invoke("setMovement", 0.1f);
+        //            }
+
+        //        }
+        //        else
+        //        {
+        //            if (horizontal < 0.0f)
+        //            {
+        //                horizontal += 0.1f;
+        //                Invoke("setMovement", 0.1f);
+        //            }
+        //            else
+        //            {
+        //                if (horizontal > 0.0f)
+        //                {
+        //                    horizontal -= 0.1f;
+        //                    Invoke("setMovement", 0.1f);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    movement = new Vector3(horizontal, velY / 18, 0);
+
+
+        //}
 
         //FIN DEL MOVIMIENTO DEL MOVIL
 
         //ESTO ES PARA EL MOVIMIENTO EN ORDENADOR     
-        //Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"), velY/18, 0);
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), velY/18, 0);
         //FIN DEL MOVIMIENTO DEL ORDENADOR
 
         this.transform.position += movement * speed * Time.deltaTime;
@@ -130,7 +182,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    
+
 
 
 }

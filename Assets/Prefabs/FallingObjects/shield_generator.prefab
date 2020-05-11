@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2385428}
   - component: {fileID: 919908766743086318}
   - component: {fileID: 1582960772639213663}
+  - component: {fileID: 3643379599537339686}
   m_Layer: 8
   m_Name: shield_generator
   m_TagString: Untagged
@@ -92,7 +93,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -110,3 +111,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.373345, y: 3.7916615, z: 6.527777}
   m_Center: {x: 0, y: 1.8973278, z: 0}
+--- !u!75 &3643379599537339686
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171142}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -2, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
