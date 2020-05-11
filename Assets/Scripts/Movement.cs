@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-
     public Rigidbody rigidbody;
-    float speed = 9.0f;
-    float velY = 0, velX = 0;
+    static float speed;
+    float velY = 0;
     public Animator robotAnimator;
     float timer;
-    float dirX;
     float horizontal = 0.0f;
     public GameObject ScoreCanvas, GameOverMenu;
     Vector3 movement;
     public GameObject menuPause;
+    public Material[] materials = new Material[4];
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +22,7 @@ public class Movement : MonoBehaviour
         ScoreController.setZero();
         Screen.sleepTimeout = SleepTimeout.NeverSleep; //para que no se suspenda el telefono mientras jugamos
         Time.timeScale = 1.0f;
+        speed = 9.0f;
     }
 
     // Update is called once per frame
@@ -135,7 +135,7 @@ public class Movement : MonoBehaviour
         //FIN DEL MOVIMIENTO DEL MOVIL
 
         //ESTO ES PARA EL MOVIMIENTO EN ORDENADOR     
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), velY/18, 0);
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), velY / 18, 0);
         //FIN DEL MOVIMIENTO DEL ORDENADOR
 
         this.transform.position += movement * speed * Time.deltaTime;
@@ -162,14 +162,21 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter(Collision other) //FUNCION PARA QUE REBOTE EL PERSONAJE
     {
-        velX = (float)rigidbody.velocity.x;
         if (other.gameObject.tag == "Platform")
         {
+            if (other.gameObject.GetComponent<Renderer>().material.name == "HigherPlat (Instance)" && velY < 0)
+            {
+                Debug.Log("gordo");
+                rigidbody.velocity = new Vector3(0, speed * 3, 0);
+            }
+            else
+            {
+                Debug.Log("no");
+                rigidbody.velocity = new Vector3(0, speed, 0);
+            }
             robotAnimator.SetBool("Platform", true);
             FindObjectOfType<AudioManager>().Play("MetalJump");
-            rigidbody.velocity = new Vector3(0, speed, 0);
         }
-
     }
     void OnTriggerEnter(Collider other)
     {
@@ -178,11 +185,11 @@ public class Movement : MonoBehaviour
             this.gameObject.SetActive(false);
             ScoreCanvas.SetActive(false);
             GameOverMenu.SetActive(true);
-
         }
     }
 
-
-
-
+    public static float getSpeed()
+    {
+        return speed;
+    }
 }
