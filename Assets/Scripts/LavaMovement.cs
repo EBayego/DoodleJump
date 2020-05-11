@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LavaMovement : MonoBehaviour
 {
-    private static float speed = 1.75f, maxSpeed = 3.75f;
+    private float speed = 1.75f, maxSpeed = 3.75f;
     private int interval = 50, counter = 1;
-    public static GameObject ScoreCanvas, GameOverMenu;
+    public GameObject ScoreCanvas, GameOverMenu;
     private bool once;
+    void start() {
+        speed = 1.75f;
+    
+    }
     void Update()
     {
         this.transform.position += new Vector3(0, speed * Time.deltaTime, 0);
