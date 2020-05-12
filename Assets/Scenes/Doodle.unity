@@ -1107,6 +1107,11 @@ MonoBehaviour:
     volume: 0.37
     loop: 0
     source: {fileID: 0}
+  - name: PlatformBreak
+    clip: {fileID: 8300000, guid: e5222bb76cb8d7b4eb951dfe4b17151b, type: 3}
+    volume: 0.13
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &425514170
 Transform:
   m_ObjectHideFlags: 0

@@ -10,9 +10,9 @@ public class OneWay : MonoBehaviour
 
     void Update()
     {
-        if (oneway)
+        if (oneway && collider != null)
             collider.enabled = false;
-        if (!oneway)
+        if (!oneway && collider != null)
             collider.enabled = true;
     }
 

@@ -164,18 +164,34 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag == "Platform")
         {
-            if (other.gameObject.GetComponent<Renderer>().material.name == "HigherPlat (Instance)" && velY < 0)
+            if (other.gameObject.GetComponent<Renderer>().material.name == "HigherPlat (Instance)" && velY <= 0)
             {
                 Debug.Log("gordo");
-                rigidbody.velocity = new Vector3(0, speed * 3, 0);
+                rigidbody.velocity = new Vector3(0, speed * 4, 0);
+                robotAnimator.SetBool("Platform", true);
+                FindObjectOfType<AudioManager>().Play("MetalJump");
             }
-            else
+            else if (other.gameObject.GetComponent<Renderer>().material.name == "FakePlat (Instance)" && velY <= 0)
+            {
+                Debug.Log("fake");
+                Destroy(other.gameObject.GetComponent<BoxCollider>());
+                FadeOut(other.gameObject);
+            }
+            else if (other.gameObject.GetComponent<Renderer>().material.name == "OncePlat (Instance)" && velY <= 0)
+            {
+                Debug.Log("once");
+                Destroy(other.gameObject);
+                robotAnimator.SetBool("Platform", true);
+                FindObjectOfType<AudioManager>().Play("MetalJump");
+                FindObjectOfType<AudioManager>().Play("PlatformBreak");
+            }
+            else if(velY <= 0)
             {
                 Debug.Log("no");
                 rigidbody.velocity = new Vector3(0, speed, 0);
+                robotAnimator.SetBool("Platform", true);
+                FindObjectOfType<AudioManager>().Play("MetalJump");
             }
-            robotAnimator.SetBool("Platform", true);
-            FindObjectOfType<AudioManager>().Play("MetalJump");
         }
     }
     void OnTriggerEnter(Collider other)
@@ -188,8 +204,15 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public static float getSpeed()
+    void FadeOut(GameObject other)
     {
-        return speed;
+        other.GetComponent<Renderer>().material.SetFloat("_Mode", 2);
+        other.GetComponent<Renderer>().material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        other.GetComponent<Renderer>().material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        other.GetComponent<Renderer>().material.SetInt("_ZWrite", 0);
+        other.GetComponent<Renderer>().material.DisableKeyword("_ALPHATEST_ON");
+        other.GetComponent<Renderer>().material.EnableKeyword("_ALPHABLEND_ON");
+        other.GetComponent<Renderer>().material.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        other.GetComponent<Renderer>().material.renderQueue = 3000;
     }
 }
