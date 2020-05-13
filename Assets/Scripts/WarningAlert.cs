@@ -1,58 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WarningAlert : MonoBehaviour
 {
-    public void Start()
-    {
-        //StartCoroutine(SpriteFadeOut(GetComponent<SpriteRenderer>()));
-        //StartCoroutine(SpriteFadeIn(GetComponent<SpriteRenderer>()));
+    bool visible;
+    static bool posChanged = false;
+    private static int count = 4;
+    static Vector3 pos;
 
-        for (int i = 0; i < 10; i++)
-        {
-            Invoke("inn", 1f);
-            Invoke("outt", 1f);
-            Debug.Log("tonto");
-        }
+    private void Start()
+    {
+        outt();
+        pos = transform.position;
     }
 
-    IEnumerator SpriteFadeOut(SpriteRenderer sprenderer)
+    private void Update()
     {
-        Color c = sprenderer.color;
-        while (c.a > 0f)
+        if (visible && count <= 3)
+            Invoke("outt", 0.2f);
+        if (!visible && count <= 3)
+            Invoke("inn", 0.2f);
+        if (posChanged)
         {
-            c.a -= Time.deltaTime / 1.2f; // fadeOutTime
-            sprenderer.color = c;
-            if (c.a <= 0f)
-                c.a = 0.0f;
-            yield return null;
+            transform.position = pos;
+            posChanged = false;
         }
-        sprenderer.color = c;
-    }
-
-    IEnumerator SpriteFadeIn(SpriteRenderer sprenderer)
-    {
-        Color c = sprenderer.color;
-        while (c.a < 1f)
-        {
-            c.a += Time.deltaTime / 1.2f; // fadeOutTime
-            sprenderer.color = c;
-            if (c.a >= 1f)
-                c.a = 1.0f;
-            yield return null;
-        }
-        sprenderer.color = c;
     }
 
     void inn()
     {
         GetComponent<SpriteRenderer>().enabled = true;
+        visible = true;
+        count++;
     }
 
     void outt()
     {
         GetComponent<SpriteRenderer>().enabled = false;
+        visible = false;
+    }
+
+    public static void startAlert(float posX)
+    {
+        pos.x = posX;
+        count = 0;
+        posChanged = true;
     }
 }

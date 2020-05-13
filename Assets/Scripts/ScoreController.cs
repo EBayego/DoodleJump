@@ -20,12 +20,12 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(rb.velocity.y > 0 && transform.position.y > Score)
+        if (rb.velocity.y > 0 && transform.position.y > Score)
         {
-            Score = (int) transform.position.y;
+            Score = (int)transform.position.y;
         }
 
-        textScore.text = "Score: " + Score;
+        textScore.text = "" + Score;
 
     }
 
