@@ -10,7 +10,7 @@ public class MenuGameOver : MonoBehaviour
 
     void OnEnable()
     {
-        scoreFinal.text = score.text;
+        scoreFinal.text = "/ "+ score.text+" /";
     }
 
     public void Restart() {
