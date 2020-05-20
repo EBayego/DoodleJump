@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour{
     
@@ -19,13 +20,15 @@ public class MainMenu : MonoBehaviour{
     }
 
     public void btnplay() {
-        SceneManager.LoadScene("Doodle");
+        SceneManager.LoadScene(1);
+
     }
 
     //public void btnsettings(){
     //}
 
     public void btnexit() {
+        Debug.Log("SALIR");
         Application.Quit();
     }
 

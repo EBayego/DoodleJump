@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     static float speed;
     float velY = 0;
     public Animator robotAnimator;
-    float timer;
+    float timer, dirX;
     float horizontal = 0.0f;
     public GameObject ScoreCanvas, GameOverMenu;
     Vector3 movement;
@@ -25,117 +25,104 @@ public class Movement : MonoBehaviour
         speed = 9.0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         velY = (float)rigidbody.velocity.y;
         //ESTO ES PARA EL MOVIMIENTO EN EL MOVIL
 
-        //dirX = Input.acceleration.x * 2;
-        //if (menuPause.GetComponent<MenuPause>().isGyroOn())
-        //{
-        //    movement = new Vector3(dirX, velY / 18, 0);
-
-        //}
-        //else
-        //{
-
-        //    if ((Input.GetTouch(0).position.x < Screen.width / 2))
-        //    {
-        //        while ((horizontal >= -1.0f) && ((Input.GetTouch(0).position.x < Screen.width / 2)))
-        //        {
-        //            horizontal -= 0.1f;
-        //            Invoke("setMovement", 0.1f);
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        if ((Input.GetTouch(0).position.x > Screen.width / 2))
-        //        {
-        //            while ((horizontal <= 1.0f) && (Input.GetTouch(0).position.x > Screen.width / 2))
-        //            {
-        //                horizontal += 0.1f;
-        //                Invoke("setMovement", 0.1f);
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            if (horizontal < 0.0f)
-        //            {
-        //                horizontal += 0.1f;
-        //                Invoke("setMovement", 0.1f);
-        //            }
-        //            else
-        //            {
-        //                if (horizontal > 0.0f)
-        //                {
-        //                    horizontal -= 0.1f;
-        //                    Invoke("setMovement", 0.1f);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    movement = new Vector3(horizontal, velY / 18, 0);
-
-
-        //}
-        //dirX = Input.acceleration.x * 2;
-        //if (menuPause.GetComponent<MenuPause>().isGyroOn())
-        //{
-        //    movement = new Vector3(dirX, velY / 18, 0);
-
-        //}
-        //else
-        //{
-
-        //    if ((Input.GetTouch(0).position.x < Screen.width / 2))
-        //    {
-        //        while ((horizontal >= -1.0f) && ((Input.GetTouch(0).position.x < Screen.width / 2)))
-        //        {
-        //            horizontal -= 0.1f;
-        //            Invoke("setMovement", 0.1f);
-        //        }
-
-        //    }
-        //    else
-        //    {
-        //        if ((Input.GetTouch(0).position.x > Screen.width / 2))
-        //        {
-        //            while ((horizontal <= 1.0f) && (Input.GetTouch(0).position.x > Screen.width / 2))
-        //            {
-        //                horizontal += 0.1f;
-        //                Invoke("setMovement", 0.1f);
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            if (horizontal < 0.0f)
-        //            {
-        //                horizontal += 0.1f;
-        //                Invoke("setMovement", 0.1f);
-        //            }
-        //            else
-        //            {
-        //                if (horizontal > 0.0f)
-        //                {
-        //                    horizontal -= 0.1f;
-        //                    Invoke("setMovement", 0.1f);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    movement = new Vector3(horizontal, velY / 18, 0);
-
-
-        //}
+        dirX = Input.acceleration.x * 2;
+        if (menuPause.GetComponent<MenuPause>().isGyroOn())
+        {
+            movement = new Vector3(dirX, velY / 18, 0);
+        }
+        else
+        {
+            if ((Input.GetTouch(0).position.x < Screen.width / 2))
+            {
+                while ((horizontal >= -1.0f) && ((Input.GetTouch(0).position.x < Screen.width / 2)))
+                {
+                    horizontal -= 0.1f;
+                    Invoke("setMovement", 0.1f);
+                }
+            }
+            else
+            {
+                if ((Input.GetTouch(0).position.x > Screen.width / 2))
+                {
+                    while ((horizontal <= 1.0f) && (Input.GetTouch(0).position.x > Screen.width / 2))
+                    {
+                        horizontal += 0.1f;
+                        Invoke("setMovement", 0.1f);
+                    }
+                }
+                else
+                {
+                    if (horizontal < 0.0f)
+                    {
+                        horizontal += 0.1f;
+                        Invoke("setMovement", 0.1f);
+                    }
+                    else
+                    {
+                        if (horizontal > 0.0f)
+                        {
+                            horizontal -= 0.1f;
+                            Invoke("setMovement", 0.1f);
+                        }
+                    }
+                }
+            }
+            movement = new Vector3(horizontal, velY / 18, 0);
+        }
+        dirX = Input.acceleration.x * 2;
+        if (menuPause.GetComponent<MenuPause>().isGyroOn())
+        {
+            movement = new Vector3(dirX, velY / 18, 0);
+        }
+        else
+        {
+            if ((Input.GetTouch(0).position.x < Screen.width / 2))
+            {
+                while ((horizontal >= -1.0f) && ((Input.GetTouch(0).position.x < Screen.width / 2)))
+                {
+                    horizontal -= 0.1f;
+                    Invoke("setMovement", 0.1f);
+                }
+            }
+            else
+            {
+                if ((Input.GetTouch(0).position.x > Screen.width / 2))
+                {
+                    while ((horizontal <= 1.0f) && (Input.GetTouch(0).position.x > Screen.width / 2))
+                    {
+                        horizontal += 0.1f;
+                        Invoke("setMovement", 0.1f);
+                    }
+                }
+                else
+                {
+                    if (horizontal < 0.0f)
+                    {
+                        horizontal += 0.1f;
+                        Invoke("setMovement", 0.1f);
+                    }
+                    else
+                    {
+                        if (horizontal > 0.0f)
+                        {
+                            horizontal -= 0.1f;
+                            Invoke("setMovement", 0.1f);
+                        }
+                    }
+                }
+            }
+            movement = new Vector3(horizontal, velY / 18, 0);
+        }
 
         //FIN DEL MOVIMIENTO DEL MOVIL
 
         //ESTO ES PARA EL MOVIMIENTO EN ORDENADOR     
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), velY / 18, 0);
+        //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), velY / 18, 0);
         //FIN DEL MOVIMIENTO DEL ORDENADOR
 
         this.transform.position += movement * speed * Time.deltaTime;
@@ -166,20 +153,17 @@ public class Movement : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Renderer>().material.name == "HigherPlat (Instance)" && velY <= 0)
             {
-                Debug.Log("gordo");
                 rigidbody.velocity = new Vector3(0, speed * 4, 0);
                 robotAnimator.SetBool("Platform", true);
                 FindObjectOfType<AudioManager>().Play("MetalJump");
             }
             else if (other.gameObject.GetComponent<Renderer>().material.name == "FakePlat (Instance)" && velY <= 0)
             {
-                Debug.Log("fake");
                 Destroy(other.gameObject.GetComponent<BoxCollider>());
                 FadeOut(other.gameObject);
             }
             else if (other.gameObject.GetComponent<Renderer>().material.name == "OncePlat (Instance)" && velY <= 0)
             {
-                Debug.Log("once");
                 Destroy(other.gameObject);
                 robotAnimator.SetBool("Platform", true);
                 FindObjectOfType<AudioManager>().Play("MetalJump");
@@ -187,7 +171,6 @@ public class Movement : MonoBehaviour
             }
             else if(velY <= 0)
             {
-                Debug.Log("no");
                 rigidbody.velocity = new Vector3(0, speed, 0);
                 robotAnimator.SetBool("Platform", true);
                 FindObjectOfType<AudioManager>().Play("MetalJump");
@@ -204,7 +187,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void FadeOut(GameObject other)
+    void FadeOut(GameObject other) 
     {
         other.GetComponent<Renderer>().material.SetFloat("_Mode", 2);
         other.GetComponent<Renderer>().material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);

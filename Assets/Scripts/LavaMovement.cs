@@ -14,8 +14,8 @@ public class LavaMovement : MonoBehaviour
     {
         speed = 1.75f;
         temp = speed;
-
     }
+
     void Update()
     {
         this.transform.position += new Vector3(0, speed * Time.deltaTime, 0);
