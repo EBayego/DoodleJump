@@ -153,7 +153,7 @@ public class Movement : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Renderer>().material.name == "HigherPlat (Instance)" && velY <= 0)
             {
-                rigidbody.velocity = new Vector3(0, speed * 4, 0);
+                rigidbody.velocity = new Vector3(0, speed * 1.5f, 0);
                 robotAnimator.SetBool("Platform", true);
                 FindObjectOfType<AudioManager>().Play("MetalJump");
             }
